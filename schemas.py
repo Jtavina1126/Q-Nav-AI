@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Dict
 
 class ResonanceInput(BaseModel):
     input_coordinates: List[float]
@@ -10,9 +10,19 @@ class BlipInput(BaseModel):
     blip_seed: float
     intensity: float
     entropy_bias: float
-    
+
 class HarmonicInput(BaseModel):
-    hrv: float  # Heart rate variability (0-100)
-    alpha_theta_ratio: float  # Brainwave balance
-    emotional_coherence: str  # 'high', 'moderate', 'low'
-    spiritual_state: str  # 'surrendered', 'dissonant', 'aligned', 'disconnected'
+    hrv: float
+    alpha_theta_ratio: float
+    emotional_coherence: str
+    spiritual_state: str
+
+class IndividualInput(BaseModel):
+    hrv: float
+    alpha_theta_ratio: float
+    emotional_coherence: str
+    spiritual_state: str
+
+class MergeInput(BaseModel):
+    person_1: Dict[str, float or str]
+    person_2: Dict[str, float or str]
